@@ -1,6 +1,6 @@
 <?php include 'includes/header.php'; ?>
 <!--Pulling Awesome Font -->
-<link href="media/css/login.css" rel="stylesheet">
+<link href="../media/css/login.css" rel="stylesheet">
 
 
 <div class="container">

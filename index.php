@@ -1,3 +1,6 @@
+<?php include 'admin/includes/all.php'; ?>
+
+
 <html>
 	<head>
 		<title>STALL Test</title>

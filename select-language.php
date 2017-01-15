@@ -1,3 +1,5 @@
+<?php include 'admin/includes/all.php'; ?>
+
 <html>
 	<head>
 		<title>Select Language</title>
@@ -11,20 +13,20 @@
                     document.getElementById('noAudio').style.display = "block";
 
                     var link = document.getElementById("pageLink");
-                    link.setAttribute('href', "exam/english_exam.php");
+                    link.setAttribute('href', "exam/selectExam.php?lang=ENG");
                     document.getElementById("pageLink").style.display = "block";
 
                 } else if(document.getElementById('hindi').checked)
                 {
                     document.getElementById('noAudio').style.display = "block";
                     var link = document.getElementById("pageLink");
-                    link.setAttribute('href', "exam/hindi_exam.php");
+                    link.setAttribute('href', "exam/selectExam.php?lang=HIN");
                     document.getElementById("pageLink").style.display = "block";
                 } else
                 {
                     document.getElementById('noAudio').style.display = "block";
                     var link = document.getElementById("pageLink");
-                    link.setAttribute('href', "exam/bengali_exam.php");
+                    link.setAttribute('href', "exam/selectExam.php?lang=BEN");
                     document.getElementById("pageLink").style.display = "block";
                 }
             }
@@ -52,7 +54,7 @@
 				</div>
 				<div id="select-language-name">
 					<div class="titlebox">Applicant Name</div>
-					<p style="margin-top:-5px;margin-right:110px;font-weight:bold;"><?php echo "Abhishek Kundu";?></p>
+					<p style="margin-top:-5px;margin-right:110px;font-weight:bold;"><?php echo $_SESSION['cName'];?></p>
 				</div>
 				<div style="float:left;height:30px;margin-left:240px;margin-top:10px;">
 					<div style="float:left;margin:5px;height:30px;width:100px;background-color:#2d32ff;color:#FFF;">
@@ -72,6 +74,6 @@
 				</div>				
 			</div>
 		</div>
-        <script src="admin/media/js/jquery.js"></script>
+        <script src="media/js/jquery.js"></script>
 	</body>
 </html>

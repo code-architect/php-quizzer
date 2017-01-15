@@ -1,3 +1,7 @@
+<?php include 'admin/includes/all.php'; ?>
+<?php
+$_SESSION['cName'] = $_REQUEST['cName'];
+?>
 <html>
 	<head>
 		<title>Start Test</title>
@@ -27,7 +31,7 @@
 **Immediate Result (Pass /Fail) will be displayed at the end of the exam. </textarea>
 				</div>
 				<div id="start-test-applicant-name">
-					Applicant Name: <input type="text" style="background-color:#EEEEEE;color:6564EE;font-weight:bold;" value="<?php echo $_REQUEST['cName'];?>" disabled/>
+					Applicant Name: <input type="text" style="background-color:#EEEEEE;color:6564EE;font-weight:bold;" value="<?php echo $_SESSION['cName'];?>" disabled/>
 				</div>
 				<div id="start-text-button">
 					<a href="select-language.php"><input type="image" src="test/images/start-test.png"/></a>
