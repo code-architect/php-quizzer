@@ -1,16 +1,37 @@
 <?php include '../admin/includes/all.php'; ?>
 
 <?php
+    // the right ans number
+    if(!isset($_SESSION['score']))
+    {
+        $_SESSION['score'] = 0;
+    }
+
+    // current question number
+    if(!isset($_SESSION['current_qus_num']))
+    {
+        $_SESSION['current_qus_num'] = 0;
+    }
+
+    // total number of rows
+    $query = "SELECT * FROM tempo_eng";
+    $results = $mysqli->query($query);
+    $total = $results->num_rows;
+
+
+//-----------------------------------------------------------------------------//
+
     $number = (int) $_GET['n'];
-
     // get the question
-    $query = "select * from tempo_eng ";
-    $result = $mysqli->query($query);
-    $result = $result->fetch_all();
+    $query = "select * from tempo_eng where question_id = ".$number;
+    $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
+    $question = $result->fetch_assoc();
 
-echo "<pre>";
-print_r($result);
-echo "</pre>";
+    // get the answers
+    $query2 = "select * from choices where question_number = ".$question['question_number'];
+    $choices = $mysqli->query($query2) or die($mysqli->error.__LINE__);
+
+
 ?>
 
 <html>
@@ -31,21 +52,23 @@ echo "</pre>";
         <main>
             <div class="container">
                 <p class="questions">
-                    ok
+                   <?php echo $question['question']; ?>
                 </p>
-                <form method="post" action="process.php">
+                <img src="../media/images/english_image/<?php echo $question['question_image']; ?>" height="100" width="100" style="margin-left:25px;margin-bottom:5px;"/>
+                <form method="post" action="english_process.php">
                     <ul class="choices">
-                        <li><input name="choice" type="radio" id="choice_1" value="1" />Question 1</li>
-                        <li><input name="choice" type="radio" id="choice_1" value="2" />Question 2</li>
-                        <li><input name="choice" type="radio" id="choice_1" value="3" />Question 3</li>
+                       <?php while($row = $choices->fetch_assoc()) : ?>
+                        <li><input name="choice" id="choice" type="radio" value="<?php echo $row['id']; ?>" /><?php echo $row['answer']; ?></li>
+                       <?php endwhile; ?>
                     </ul>
-                    <img src="../media/images/english_image/example.jpg" height="100" width="100" style="margin-left:25px;margin-bottom:5px;"/>
 
-                    <input type="submit" value="Submit" id="submit"/>
+                    <input type="submit" value="Submit" name="submit" id="submit"/>
+                    <input type="hidden" name="number" value="<?php echo $number; ?>"/>
+                    <input type="hidden" name="actual_number" value="<?php echo $question['question_number']; ?>"/>
                 </form>
 
-                <div class="current">Question No. 1</div><br>
-                <div class="currentMarks">1/3</div>
+                <div class="current">Question No. <?php echo $_SESSION['current_qus_num']+1; ?></div><br>
+                Total number of correct answer: <div class="currentMarks"><?php echo $_SESSION['score']; ?>/<?php echo $_SESSION['current_qus_num']; ?></div>
                 <h3 id="quizTime">Time left 30s</h3>
 
             </div>

@@ -48,3 +48,29 @@ http://stackoverflow.com/questions/3258835/php-display-x-items-from-foreach-loop
 //--------------------------------------------------------------------------------------------------------
 
 mysqli_query($conn,'SET CHARACTER SET utf8'); mysqli_query($conn,"SET SESSION collation_connection ='utf8_general_ci'")
+
+//-------------------------------------------------------------//
+<p>You will be redirected in <span id="counter">10</span> second(s).</p>
+<script type="text/javascript">
+function countdown() {
+    var i = document.getElementById('counter');
+    if (parseInt(i.innerHTML)<=0) {
+        location.href = 'login.php';
+    }
+    i.innerHTML = parseInt(i.innerHTML)-1;
+}
+setInterval(function(){ countdown(); },1000);
+</script>
+
+=====================
+http://stackoverflow.com/questions/12498209/redirect-10-second-countdown
+
+https://www.youtube.com/watch?v=mJ6IhtkxW1Q
+
+https://www.youtube.com/watch?v=fKZNIDJjJRs
+
+https://www.youtube.com/watch?v=EA27xM71m0g
+
+https://www.youtube.com/watch?v=eCpDweOvEMg
+
+https://www.youtube.com/watch?v=iO6ovnDo4FQ
