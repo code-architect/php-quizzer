@@ -31,7 +31,7 @@
     $query2 = "select * from choices where question_number = ".$question['question_number'];
     $choices = $mysqli->query($query2) or die($mysqli->error.__LINE__);
 
-
+//-----------------------------------------------------------------------------//
 ?>
 
 <html>
@@ -39,6 +39,61 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Examination Page</title>
     <link rel="stylesheet" type="text/css" href="_css/style.css">
+    <script type="text/javascript" src="../media/js/jquery.js" ></script>
+
+    <!-- Javascript Code -->
+    <script type="text/javascript">
+        /**
+         * Auto submit after time up
+         */
+        $(document).ready(function(){
+            var time = 5;
+            var getValue = Number(getUrlParameter('n'));
+            var addValue = 1;
+            getValue = getValue + addValue;
+
+            var url = 'english_exam.php?n='+getValue;
+            var finalUrl =  'english_final.php';
+
+            function countdown(){
+                setTimeout(countdown,1000);
+                $('#quizTime').html(time);
+                time--;
+
+                if(time < 0){
+                   if(getValue <= 3){
+                       window.location = url;
+                   }else{
+                       window.location = finalUrl;
+                   }
+                   time = 0;
+                }
+            }
+
+            countdown();
+        });
+
+
+        // fetching the GET value parameter
+         function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+
+
+
+    </script>
+    <!-- Javascript Code Ends -->
 </head>
     <body>
 
@@ -55,7 +110,8 @@
                    <?php echo $question['question']; ?>
                 </p>
                 <img src="../media/images/english_image/<?php echo $question['question_image']; ?>" height="100" width="100" style="margin-left:25px;margin-bottom:5px;"/>
-                <form method="post" action="english_process.php">
+
+                <form id="myform" method="post" action="english_process.php">
                     <ul class="choices">
                        <?php while($row = $choices->fetch_assoc()) : ?>
                         <li><input name="choice" id="choice" type="radio" value="<?php echo $row['id']; ?>" /><?php echo $row['answer']; ?></li>
@@ -69,12 +125,10 @@
 
                 <div class="current">Question No. <?php echo $_SESSION['current_qus_num']+1; ?></div><br>
                 Total number of correct answer: <div class="currentMarks"><?php echo $_SESSION['score']; ?>/<?php echo $_SESSION['current_qus_num']; ?></div>
-                <h3 id="quizTime">Time left 30s</h3>
+                <h3 id="quizTime"></h3>
 
             </div>
         </main>
-
-
 
     </body>
 </html>

@@ -1,6 +1,6 @@
 <?php include '../admin/includes/all.php'; ?>
 <?php
-echo "<h1>Out of ".$_SESSION['current_qus_num']. " questions ".$_SESSION['score']." are correct</h1>";
+echo "<h1>Out of 3"/*$_SESSION['current_qus_num']*/." questions ".$_SESSION['score']." are correct</h1>";
 if($_SESSION['score'] >= 2){
     echo "<h1>Yes! You have passed</h1>";
 }else{

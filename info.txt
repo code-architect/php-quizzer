@@ -1,0 +1,15 @@
+document.getElementById("my_form_id").submit();
+
+http://stackoverflow.com/questions/979975/how-to-get-the-value-from-the-get-parameters
+
+http://stackoverflow.com/questions/8828027/how-do-i-delay-a-form-from-submitting
+
+http://stackoverflow.com/questions/11143461/enable-input-field-on-radio-button-checked
+
+http://stackoverflow.com/questions/23378676/check-if-selected-radio-button-equals-the-answer-stored-in-an-array
+
+http://stackoverflow.com/questions/23324133/how-to-change-background-color-of-textarea-and-textbox-javascript
+
+
+http://stackoverflow.com/questions/19491336/get-url-parameter-jquery-or-how-to-get-query-string-values-in-js
+
