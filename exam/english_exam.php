@@ -133,9 +133,8 @@
             }else{
                 document.getElementById("ansIsCorrect").innerHTML = danger;
             }
-
-
         }
+
 
 
 
