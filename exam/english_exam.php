@@ -95,7 +95,6 @@
         $(document).ready(function(){
             $('#myform :radio').click(function() {
                 if (!$("input[name='choice']:checked").val()) {
-                    alert('Nothing is checked!');
                     return false;
                 }
                 else {
@@ -103,18 +102,6 @@
                 }
             });
         });
-
-
-        //show msg on click then redirect
-//        function submitRedirect(url){
-//        $('#submit').click (function (e) {
-//            e.preventDefault(); //will stop the link href to call the blog page
-//
-//            setTimeout(function () {
-//                window.location.href = 'english_process.php'; //will redirect to your blog page (an ex: blog.html)
-//            }, 2000); //will call the function after 2 secs.
-//        })};
-
 
 
 
