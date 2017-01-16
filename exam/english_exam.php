@@ -18,8 +18,8 @@
     $results = $mysqli->query($query);
     $total = $results->num_rows;
 
+//--------------------------------------------------------------------------------------------------------------------//
 
-//-----------------------------------------------------------------------------//
 
     $number = (int) $_GET['n'];
     // get the question
@@ -31,6 +31,12 @@
     $query2 = "select * from choices where question_number = ".$question['question_number'];
     $choices = $mysqli->query($query2) or die($mysqli->error.__LINE__);
 
+    // select the right answer for javascript
+    $query3 = "select id from choices where question_number = ".$question['question_number']." and is_correct = 1";
+    $showAnswer = $mysqli->query($query3) or die($mysqli->error.__LINE__);
+    $showAns = $showAnswer->fetch_assoc();
+
+
 //-----------------------------------------------------------------------------//
 ?>
 
@@ -40,6 +46,9 @@
     <title>Examination Page</title>
     <link rel="stylesheet" type="text/css" href="_css/style.css">
     <script type="text/javascript" src="../media/js/jquery.js" ></script>
+
+    <link rel="stylesheet" type="text/css" href="../_css/modal.css"/>
+
 
     <!-- Javascript Code -->
     <script type="text/javascript">
@@ -99,9 +108,34 @@
                 }
                 else {
                     document.getElementById("submit").disabled = false;
+                    document.getElementById("submit").style.background = 'green';
                 }
             });
         });
+
+        //change color
+        function myFunction()
+        {
+            var rightAns = <?php echo $showAns['id']; ?>;
+            var radioValue = $("input[name='choice']:checked", '#myform').val();
+
+            var danger = "<div class=\"alert\">"+
+                         "<span class=\"closebtn\"></span>"+
+                         "<strong>Success!</strong> Indicates a successful or positive action.</div>";
+
+            var success =  "<div class=\"alert success\">"+
+                           "<span class=\"closebtn\"></span>"+
+                           "<strong>Success!</strong> Indicates a successful or positive action.</div>";
+
+            if(rightAns == radioValue)
+            {
+                document.getElementById("ansIsCorrect").innerHTML = success;
+            }else{
+                document.getElementById("ansIsCorrect").innerHTML = danger;
+            }
+
+
+        }
 
 
 
@@ -116,7 +150,6 @@
                 Student Name: <?php echo $_SESSION['cName']; ?>
             </div>
         </header>
-
         <main>
             <div class="container">
                 <p class="questions">
@@ -124,7 +157,7 @@
                 </p>
                 <img src="../media/images/english_image/<?php echo $question['question_image']; ?>" height="100" width="100" style="margin-left:25px;margin-bottom:5px;"/>
 
-                <form id="myform" method="post" action="english_process.php">
+                <form onsubmit="myFunction()" id="myform" method="post" action="english_process.php">
                     <ul class="choices">
                        <?php while($row = $choices->fetch_assoc()) : ?>
                         <li><input name="choice" id="choice" type="radio" value="<?php echo $row['id']; ?>" /><?php echo $row['answer']; ?></li>
@@ -135,6 +168,8 @@
                     <input type="hidden" name="number" value="<?php echo $number; ?>"/>
                     <input type="hidden" name="actual_number" value="<?php echo $question['question_number']; ?>"/>
                 </form>
+
+                <div id="ansIsCorrect"></div>
 
                 <div class="current">Question No. <?php echo $_SESSION['current_qus_num']+1; ?></div><br>
                 Total number of correct answer: <div class="currentMarks"><?php echo $_SESSION['score']; ?>/<?php echo $_SESSION['current_qus_num']; ?></div>
