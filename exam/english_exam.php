@@ -47,7 +47,7 @@
          * Auto submit after time up
          */
         $(document).ready(function(){
-            var time = 5;
+            var time = 10;
             var getValue = Number(getUrlParameter('n'));
             var addValue = 1;
             getValue = getValue + addValue;
@@ -69,7 +69,6 @@
                    time = 0;
                 }
             }
-
             countdown();
         });
 
@@ -89,6 +88,33 @@
                 }
             }
         };
+
+        /**
+         * check if radio button is clicked then enable submit button
+         */
+        $(document).ready(function(){
+            $('#myform :radio').click(function() {
+                if (!$("input[name='choice']:checked").val()) {
+                    alert('Nothing is checked!');
+                    return false;
+                }
+                else {
+                    document.getElementById("submit").disabled = false;
+                }
+            });
+        });
+
+
+        //show msg on click then redirect
+//        function submitRedirect(url){
+//        $('#submit').click (function (e) {
+//            e.preventDefault(); //will stop the link href to call the blog page
+//
+//            setTimeout(function () {
+//                window.location.href = 'english_process.php'; //will redirect to your blog page (an ex: blog.html)
+//            }, 2000); //will call the function after 2 secs.
+//        })};
+
 
 
 
@@ -118,7 +144,7 @@
                        <?php endwhile; ?>
                     </ul>
 
-                    <input type="submit" value="Submit" name="submit" id="submit"/>
+                    <input type="submit" value="Submit" name="submit" id="submit" disabled/>
                     <input type="hidden" name="number" value="<?php echo $number; ?>"/>
                     <input type="hidden" name="actual_number" value="<?php echo $question['question_number']; ?>"/>
                 </form>
