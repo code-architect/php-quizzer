@@ -1,6 +1,6 @@
 <?php include '../admin/includes/all.php'; ?>
 <?php
-
+print_r($_POST);
 
 if(isset($_POST['submit']))
 {
@@ -16,7 +16,7 @@ if(isset($_POST['submit']))
     $total = $results->num_rows;
 
     // getting the correct ans
-    $query = "SELECT * FROM choices where question_number = $actual_number AND is_correct = 1";
+    $query = "SELECT * FROM eng_choices where question_number = $actual_number AND is_correct = 1";
     $result = $mysqli->query($query);
     $row = $result->fetch_assoc();
 

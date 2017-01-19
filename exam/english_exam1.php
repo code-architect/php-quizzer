@@ -119,6 +119,7 @@
             var rightAns = <?php echo $showAns['id']; ?>;
             var radioValue = $("input[name='choice']:checked", '#myform').val();
 
+
             var danger = "<div class=\"alert\">"+
                          "<span class=\"closebtn\"></span>"+
                          "<strong>Success!</strong> Indicates a successful or positive action.</div>";
@@ -129,9 +130,9 @@
 
             if(rightAns == radioValue)
             {
-                document.getElementById("ansIsCorrect").innerHTML = success;
+                document.getElementById("myButt").innerHTML = success;
             }else{
-                document.getElementById("ansIsCorrect").innerHTML = danger;
+                document.getElementById("myButt").innerHTML = danger;
             }
         }
 
