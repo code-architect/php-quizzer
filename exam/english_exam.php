@@ -134,9 +134,9 @@ $showAns = $showAnswer->fetch_assoc();
 
             if(rightAns == radioValue)
             {
-                document.getElementById("myButt").innerHTML = success;
+                document.getElementById(myButton).innerHTML = success;
             }else{
-                document.getElementById("myButt").innerHTML = danger;
+                document.getElementById(myButton).innerHTML = danger;
             }
         }
 
@@ -174,8 +174,8 @@ $showAns = $showAnswer->fetch_assoc();
                 <div style="margin-left:-50px;margin-top:-20px;float:left;">
                     <input type="radio" id="choice" name="choice" value="<?php echo $row['id']; ?>"/>
                 </div>
-                <div>
-                    <textarea id="choice_<?php echo $row['id']; ?>" class="ans-box" style="margin-top:-40px;" disabled><?php echo $row['answer']; ?></textarea>
+                <div id="choice_<?php echo $row['id']; ?>">
+                    <textarea  class="ans-box" style="margin-top:-40px;" disabled><?php echo $row['answer']; ?></textarea>
                 </div>
             </div>
         </div>
