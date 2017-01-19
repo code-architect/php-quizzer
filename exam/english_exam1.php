@@ -1,5 +1,5 @@
 <?php include '../admin/includes/all.php'; ?>
-
+<?php print_r($_SESSION); ?>
 <?php
     // the right ans number
     if(!isset($_SESSION['score']))
@@ -28,11 +28,11 @@
     $question = $result->fetch_assoc();
 
     // get the answers
-    $query2 = "select * from choices where question_number = ".$question['question_number'];
+    $query2 = "select * from eng_choices where question_number = ".$question['question_number'];
     $choices = $mysqli->query($query2) or die($mysqli->error.__LINE__);
 
     // select the right answer for javascript
-    $query3 = "select id from choices where question_number = ".$question['question_number']." and is_correct = 1";
+    $query3 = "select id from eng_choices where question_number = ".$question['question_number']." and is_correct = 1";
     $showAnswer = $mysqli->query($query3) or die($mysqli->error.__LINE__);
     $showAns = $showAnswer->fetch_assoc();
 

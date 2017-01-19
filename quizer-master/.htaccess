@@ -1,3 +1,0 @@
-AddDefaultCharset UTF-8
-RewriteEngine On
-RewriteRule ^([^/]*)/([^/]*)$ /survey.php?id=$1&hash=$2 [L]
