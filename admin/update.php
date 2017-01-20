@@ -1,23 +1,6 @@
 <?php include 'includes/all.php'; ?>
 <?php include'includes/header.php'; ?>
 
-<?php
-    $type = $_GET['type'];
-
-    if(!isset($_SESSION['errors'])){
-        $_SESSION['errors'] = '';
-    }
-
-
-    // select database
-    $question_database = selectQuestionDatabase($type);
-
-    //get the last inserted number of question
-    $query = "SELECT question_number FROM ".$question_database." ORDER BY question_number DESC LIMIT 1 ";
-    $result = $mysqli->query($query);
-    $num = $result->fetch_assoc();
-    $question_num = $num['question_number']+1;
-?>
 
 
     <!-- Page Content -->
@@ -54,11 +37,11 @@
                             <input type="text" class="form-control" name="ans3" id="ans3">
                         </div>
 
-                            <select name="rightAnswer">
-                                <option value="1">Answer 1</option>
-                                <option value="2">Answer 2</option>
-                                <option value="3">Answer 3</option>
-                            </select>
+                        <select name="rightAnswer">
+                            <option value="1">Answer 1</option>
+                            <option value="2">Answer 2</option>
+                            <option value="3">Answer 3</option>
+                        </select>
 
 
                         <div class="form-group">
@@ -79,5 +62,7 @@
         </div>
     </div>
     <!-- /#page-content-wrapper -->
+
+
 
 <?php include'includes/footer.php'; ?>
