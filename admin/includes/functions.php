@@ -1,5 +1,6 @@
 <?php
 
+// select database based on $_GET
 function selectQuestionDatabase($type)
 {
     if($type == 'eng')
@@ -19,6 +20,7 @@ function selectQuestionDatabase($type)
 
 //------------------------------------------------------------------------------------------//
 
+// select answer database based on $_GET
 function selectAnswerDatabase($type)
 {
     if($type == 'eng')
@@ -38,6 +40,7 @@ function selectAnswerDatabase($type)
 
 //---------------------------------------------------------------------------------------//
 
+// select image folder based on $_GET
     function selectImageFolder($type)
     {
         if($type == 'eng')
@@ -55,6 +58,25 @@ function selectAnswerDatabase($type)
         }
     }
 
+//---------------------------------------------------------------------------------------//
+
+// select display name based on $_GET
+function selectName($type)
+{
+    if($type == 'eng')
+    {
+        return 'English Questions';
+    } elseif($type == 'ben')
+    {
+        return 'Bengali Questions';
+    }elseif($type == 'hin')
+    {
+        return 'Hindi Questions';
+    }
+    else{
+        return false;
+    }
+}
 
 
 //---------------------------------------------------------------------------------------//
@@ -66,3 +88,13 @@ function clean($var)
     return $var;
 }
 
+//---------------------------------------------------------------------------------------//
+
+function fetch_questions($question_database)
+{
+    global $mysqli;
+    $query = "SELECT * FROM ".$question_database;
+    $results = $mysqli->query($query);
+    $returnValue = $results->fetch_all(MYSQLI_ASSOC);
+    return $returnValue;
+}

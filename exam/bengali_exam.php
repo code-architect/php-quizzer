@@ -14,7 +14,7 @@ if(!isset($_SESSION['current_qus_num']))
 }
 
 // total number of rows
-$query = "SELECT * FROM tempo_hin";
+$query = "SELECT * FROM tempo_beng";
 $results = $mysqli->query($query);
 $total = $results->num_rows;
 
@@ -23,16 +23,16 @@ $total = $results->num_rows;
 
 $number = (int) $_GET['n'];
 // get the question
-$query = "select * from tempo_hin where question_id = ".$number;
+$query = "select * from tempo_beng where question_id = ".$number;
 $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 $question = $result->fetch_assoc();
 
 // get the answers
-$query2 = "select * from hin_choices where question_number = ".$question['question_number'];
+$query2 = "select * from beng_choices where question_number = ".$question['question_number'];
 $choices = $mysqli->query($query2) or die($mysqli->error.__LINE__);
 
 // select the right answer for javascript
-$query3 = "select id from hin_choices where question_number = ".$question['question_number']." and is_correct = 1";
+$query3 = "select id from beng_choices where question_number = ".$question['question_number']." and is_correct = 1";
 $showAnswer = $mysqli->query($query3) or die($mysqli->error.__LINE__);
 $showAns = $showAnswer->fetch_assoc();
 
@@ -166,7 +166,7 @@ $showAns = $showAnswer->fetch_assoc();
 
 
         <!-- form starts -->
-        <form onsubmit="myFunction()" id="myform" method="post" action="hindi_process.php">
+        <form onsubmit="myFunction()" id="myform" method="post" action="bengali_process.php">
 
         <?php while($row = $choices->fetch_assoc()) : ?>
         <div id="exam-answer">

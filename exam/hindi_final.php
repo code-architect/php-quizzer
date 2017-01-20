@@ -5,12 +5,12 @@ if($_SESSION['score'] >= 6){
     $drop_english = "DROP table tempo_eng";
     $mysqli->query($drop_english);
     session_destroy();
-    header('Location: exam_final/english/examination-end-english-pass.php');
+    header('Location: exam_final/hindi/examination-end-hindi-pass.php');
 }else{
     $drop_english = "DROP table tempo_eng";
     $mysqli->query($drop_english);
     session_destroy();
-    header('Location: exam_final/english/examination-end-english-fail.php');
+    header('Location: exam_final/hindi/examination-end-hindi-fail.php');
 }
 
 

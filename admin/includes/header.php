@@ -45,13 +45,13 @@
                 <a href="index.php">Dashboard</a>
             </li>
             <li>
-                <a href="english_question.php">English Questions</a>
+                <a href="english_question.php?type=eng">English Questions</a>
             </li>
             <li>
-                <a href="bengali_question.php">Bengali Questions</a>
+                <a href="english_question.php?type=ben">Bengali Questions</a>
             </li>
             <li>
-                <a href="hindi_question.php">Hindi Questions</a>
+                <a href="english_question.php?type=hin">Hindi Questions</a>
             </li>
             <li>
                 <a href="#">Services</a>
