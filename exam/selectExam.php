@@ -41,7 +41,7 @@ if($_GET['lang'] === 'ENG'){
     $mysqli->query($insert_data);
 
 
-    header('Location: hindi_exam.php');
+    header('Location: hindi_exam.php?n=1');
 }elseif($_GET['lang'] === 'BEN'){
 
     //create view
@@ -61,7 +61,7 @@ if($_GET['lang'] === 'ENG'){
     $mysqli->query($insert_data);
 
 
-    header('Location: bengali_exam.php');
+    header('Location: bengali_exam.php?n=1');
 }else{
     header('Location : /');
 }

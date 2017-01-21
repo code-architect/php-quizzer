@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2017 at 12:40 AM
+-- Generation Time: Jan 21, 2017 at 08:02 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -59,7 +59,8 @@ INSERT INTO `bengali_question` (`question_number`, `question`, `question_image`)
 (8, 'who is stupid?', 'example.jpg'),
 (9, 'how do we feel near fire?', 'example.jpg'),
 (10, 'which one fly?', 'example.jpg'),
-(11, 'which one is the best language?', 'example.jpg');
+(11, 'which one is the best language?', 'example.jpg'),
+(12, 'à¦¯à¦¾à¦°à¦¾ à¦•à¦¾à¦à¦¦à§‡?', 'example.jpg');
 
 -- --------------------------------------------------------
 
@@ -111,7 +112,10 @@ INSERT INTO `beng_choices` (`id`, `question_number`, `is_correct`, `answer`) VAL
 (30, 10, 1, 'bird'),
 (31, 11, 1, 'php'),
 (32, 11, 0, 'c sharp'),
-(33, 11, 0, 'java');
+(33, 11, 0, 'java'),
+(34, 12, 0, 'à¦ªà§à¦°à¦¾à¦ªà§à¦¤à¦¬à¦¯à¦¼à¦¸à§à¦•'),
+(35, 12, 1, 'à¦¶à¦¿à¦¶à§'),
+(36, 12, 0, 'à¦›à¦¾à¦¤à§à¦°');
 
 -- --------------------------------------------------------
 
@@ -334,17 +338,17 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `beng_choices`
 --
 ALTER TABLE `beng_choices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `eng_choices`
 --
 ALTER TABLE `eng_choices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `hin_choices`
 --
 ALTER TABLE `hin_choices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
