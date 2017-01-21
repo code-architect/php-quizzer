@@ -33,7 +33,7 @@ foreach($answers as $num => $ans)
             <div class="row">
                 <div class="col-lg-12">
                     <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a>
-                    <h1>Add English Question</h1>
+                    <h1>Edit English Question</h1>
                     <p>
 
                     <form action="edit_process.php" method="post" enctype="multipart/form-data">
@@ -55,6 +55,7 @@ foreach($answers as $num => $ans)
                         <div class="form-group">
                             <label for="ans<?php echo $key; ?>">Answer <?php echo $key; ?>:</label>
                             <input type="text" value="<?php echo $value['answer']; ?>" class="form-control" name="ans<?php echo $key; ?>" id="ans<?php echo $key; ?>">
+                            <input type="hidden" name="ansid_<?php echo $key; ?>" value="<?php echo $value['id']; ?>"/>
                         </div>
                         <?php } ?>
 
@@ -64,7 +65,7 @@ foreach($answers as $num => $ans)
                                 $key = $key+1
                                 ?>
 
-                                <option <?php if($value['is_correct'] == 1){echo "selected";}  ?> value="<?php echo $key; ?>"><?php echo $value['answer']; ?></option>
+                                <option <?php if($value['is_correct'] == 1){echo "selected";}  ?> value="<?php echo $value['id']; ?>"><?php echo $key; ?></option>
 
                             <?php } ?>
 
@@ -78,7 +79,7 @@ foreach($answers as $num => $ans)
 
                         <div class="form-group">
                             <label for="">Current Image: </label>
-                            <img src="../media/images/<?php echo $image_folder; ?>/<?php echo $question['question_image']; ?>" alt=""/>
+                            <img src="../media/images/<?php echo $image_folder; ?>/<?php echo $question['question_image']; ?>" height="100" width="100" alt=""/>
                         </div>
 
 
@@ -87,6 +88,7 @@ foreach($answers as $num => $ans)
 
                         <button name="submit" type="submit" class="btn btn-default">Submit</button>
                         <input type="hidden" name="type" value="<?php echo $type; ?>"/>
+                        <input type="hidden" name="old_image" value="<?php echo $question['question_image']; ?>"/>
                     </form>
 
                     </p>
