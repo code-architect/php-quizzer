@@ -45,7 +45,6 @@ if(isset($_POST['submit']))
     $selected_choice = $_GET['radioAns'];
     $number = $_GET['numb'];
 
-    $next = $number+1;
 
     // get total number
     $query = "SELECT * FROM tempo_eng";
@@ -63,6 +62,6 @@ if(isset($_POST['submit']))
     {
         header("Location: english_final.php");
     }else{
-        header("Location: english_exam.php?n=".$next);
+        header("Location: english_exam.php?n=".$number);
     }
 }

@@ -106,6 +106,7 @@ $showAns = $showAnswer->fetch_assoc();
                             url = 'english_exam.php?n='+getValue;
                             window.location = url;
                         }else{
+                            myFunction();
                             url = 'english_process.php?rightAns='+rightAns+'&radioAns='+$( "input[type=radio][name='choice']:checked" ).val()+'&numb='+getValue;
                             //alert($( "input[type=radio][name='choice']:checked" ).val());
                             window.location = url;
