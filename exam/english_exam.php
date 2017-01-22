@@ -38,6 +38,9 @@ $showAns = $showAnswer->fetch_assoc();
 
 
 //-----------------------------------------------------------------------------//
+
+
+
 ?>
 
 <html>
@@ -56,30 +59,71 @@ $showAns = $showAnswer->fetch_assoc();
          * Auto submit after time up
          */
         $(document).ready(function(){
-            var time = 30;
+            /**
+             * check if radio button is clicked then enable submit button
+             */
+            $('#myform :radio').click(function() {
+                if (!$("input[name='choice']:checked").val()) {
+                    return false;
+                }
+                else {
+//                    var radioValue = document.getElementById("choice").value;
+//                    alert(radioValue);
+//                    var changeDiv = "<div id='demo' value='"+radioValue+"'>";
+//                    document.getElementById('trouble').innerHTML = changeDiv;
+
+                    document.getElementById("submit").disabled = false;
+                    document.getElementById("submit").style.background = 'green';
+                }
+            });
+
+            //------------------------------------------------------------------
+            var time = 10;
             var getValue = Number(getUrlParameter('n'));
             var addValue = 1;
             getValue = getValue + addValue;
 
-            var url = 'english_exam.php?n='+getValue;
+            var url = '';
+            var rightAns = <?php echo $showAns['id']; ?>;
+
+//            if (document.getElementById('choice').checked) {
+//                var radioValue = document.getElementById('choice').value;
+//            }
+
+
             var finalUrl =  'english_final.php';
 
+
             function countdown(){
+
                 setTimeout(countdown,1000);
                 document.getElementById("quizTime").innerHTML = time;
                 time--;
 
                 if(time < 0){
                     if(getValue <= 10){
-                        window.location = url;
+                        if(document.getElementById('submit').disabled) {
+                            url = 'english_exam.php?n='+getValue;
+                            window.location = url;
+                        }else{
+                            url = 'english_process.php?rightAns='+rightAns+'&radioAns='+$( "input[type=radio][name='choice']:checked" ).val()+'&numb='+getValue;
+                            //alert($( "input[type=radio][name='choice']:checked" ).val());
+                            window.location = url;
+                        }
                     }else{
                         window.location = finalUrl;
                     }
+
                     time = 0;
                 }
             }
             countdown();
         });
+
+
+
+
+
 
         // fetching the GET value parameter
         function getUrlParameter(sParam) {
@@ -101,17 +145,10 @@ $showAns = $showAnswer->fetch_assoc();
         /**
          * check if radio button is clicked then enable submit button
          */
-        $(document).ready(function(){
-            $('#myform :radio').click(function() {
-                if (!$("input[name='choice']:checked").val()) {
-                    return false;
-                }
-                else {
-                    document.getElementById("submit").disabled = false;
-                    document.getElementById("submit").style.background = 'green';
-                }
-            });
-        });
+//        $(document).ready(function(){
+//
+//
+//        });
 
 
         /**
@@ -121,8 +158,8 @@ $showAns = $showAnswer->fetch_assoc();
         {
             var rightAns = <?php echo $showAns['id']; ?>;
             var radioValue = $("input[name='choice']:checked", '#myform').val();
-            var myButton = "choice_"+radioValue;
 
+            var myButton = "choice_"+radioValue;
 
             var danger = "<div class=\"alert\">"+
                 "<span class=\"closebtn\"></span>"+
@@ -171,7 +208,7 @@ $showAns = $showAnswer->fetch_assoc();
         <?php while($row = $choices->fetch_assoc()) : ?>
         <div id="exam-answer">
             <div style="margin-left:130px;">
-                <div style="margin-left:-50px;margin-top:-20px;float:left;">
+                <div id="sendRadio"  style="margin-left:-50px;margin-top:-20px;float:left;">
                     <input type="radio" id="choice" name="choice" value="<?php echo $row['id']; ?>"/>
                 </div>
                 <div id="choice_<?php echo $row['id']; ?>">
@@ -191,6 +228,8 @@ $showAns = $showAnswer->fetch_assoc();
                 <input type="hidden" name="actual_number" value="<?php echo $question['question_number']; ?>"/>
         </form>
          <!-- form ends -->
+
+                <div id="trouble" align="center"></div>
 
                 <div style="float:left;margin-top:35px;margin-left:40px;color:#089D99;font-weight:bold;font-size:30px; ">
                     <?php echo $_SESSION['score']; ?>/<?php echo $_GET['n']; ?>
