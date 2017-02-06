@@ -1,6 +1,7 @@
 <?php include '../admin/includes/all.php'; ?>
 <?php
-print_r($_POST);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 if(isset($_POST['submit']))
 {
@@ -35,5 +36,30 @@ if(isset($_POST['submit']))
         header("Location: hindi_final.php");
     }else{
         header("Location: hindi_exam.php?n=".$next);
+    }
+}
+}else{
+    $correct_choice = $_GET['rightAns'];
+    $selected_choice = $_GET['radioAns'];
+    $number = $_GET['numb'];
+
+
+    // get total number
+    $query = "SELECT * FROM tempo_hin";
+    $results = $mysqli->query($query);
+    $total = $results->num_rows;
+
+
+    if($correct_choice == $selected_choice)
+    {
+        $_SESSION['score']++;
+    }
+
+    // check if its the last question
+    if($number == $total)
+    {
+        header("Location: hindi_final.php");
+    }else{
+        header("Location: hindi_exam.php?n=".$number);
     }
 }

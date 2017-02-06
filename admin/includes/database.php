@@ -1,7 +1,7 @@
 <?php
 
 $HOST = "localhost";
-$DB_NAME = "php_quizzer";
+$DB_NAME = "drivingExam";
 $USER_NAME = "root";
 $PASSWORD = "";
 

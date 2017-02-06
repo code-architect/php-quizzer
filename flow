@@ -77,16 +77,10 @@ https://www.youtube.com/watch?v=iO6ovnDo4FQ
 
 
 
-var rightAns = <?php echo $showAns['id']; ?>;
-var radioValue = $("input[name='choice']:checked", '#myform').val();
-if(rightAns === radioValue)
-{
-    <?php $_SESSION['score']++; ?>
-}
 
 
-id = choice
 
-value
 
-id = submit
+
+
+Array ( [choice] => 11 [submit] => Submit [number] => 1 [actual_number] => 4 )

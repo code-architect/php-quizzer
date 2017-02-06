@@ -11,7 +11,7 @@
                 if (document.getElementById('english').checked)
                 {
                     document.getElementById('noAudio').style.display = "block";
-
+                    document.getElementById('withAudio').style.display = "block";
                     var link = document.getElementById("pageLink");
                     link.setAttribute('href', "exam/selectExam.php?lang=ENG");
                     document.getElementById("pageLink").style.display = "block";
@@ -19,12 +19,14 @@
                 } else if(document.getElementById('hindi').checked)
                 {
                     document.getElementById('noAudio').style.display = "block";
+                    document.getElementById('withAudio').style.display = "block";
                     var link = document.getElementById("pageLink");
                     link.setAttribute('href', "exam/selectExam.php?lang=HIN");
                     document.getElementById("pageLink").style.display = "block";
                 } else
                 {
                     document.getElementById('noAudio').style.display = "block";
+                    document.getElementById('withAudio').style.display = "block";
                     var link = document.getElementById("pageLink");
                     link.setAttribute('href', "exam/selectExam.php?lang=BEN");
                     document.getElementById("pageLink").style.display = "block";
@@ -63,9 +65,11 @@
                     <div style="float:left;margin:5px;height:30px;width:100px;background-color:#83052a;color:#FFF;"><input type="checkbox" id="bengali" name="selectLang" value="1" onclick="noAudioDiv()"/> Bengali</div>
 				</div>
 				<div style="float:left;margin-top:30px;margin-left:140px;height:100px;">
-					<div style="float:left;margin-top:30px;display:none;" id="noAudio">
-
-						<a id="pageLink"  href="exam/english_exam.php"><img src="test/images/no-audio.png"></a>
+					<div style="float:left;margin-top:30px;display:none;" id="withAudio">
+						<a href="index.php"><img src="test/images/with-audio.png" style="float:left;"></a>
+					</div>
+					<div style="float:left;margin-top:-70px;display:none;margin-left:260px;" id="noAudio">
+						<a id="pageLink"><img src="test/images/no-audio.png" style="float:left;"></a>
 					</div>
 				</div>
 					<div style="float:left;margin-top:30px;margin-left:300px;">

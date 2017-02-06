@@ -1,6 +1,6 @@
 body{
 	background-color: #000;
-	background: url('../images/background.jpg') no-repeat;
+	/*background: url('../images/background.jpg') no-repeat;*/
 }
 #wrapper{
 	width: 770px;

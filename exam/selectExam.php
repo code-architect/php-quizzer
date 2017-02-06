@@ -1,6 +1,5 @@
 <?php include '../admin/includes/all.php'; ?>
 <?php
-
 if($_GET['lang'] === 'ENG'){
 
 

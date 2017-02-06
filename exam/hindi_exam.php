@@ -47,7 +47,7 @@ $showAns = $showAnswer->fetch_assoc();
     <script type="text/javascript" src="../media/js/jquery.js" ></script>
 
     <link rel="stylesheet" type="text/css" href="../_css/modal.css"/>
-
+    <meta charset="UTF-8" />
 
     <!-- Javascript Code -->
     <script type="text/javascript">
@@ -56,30 +56,72 @@ $showAns = $showAnswer->fetch_assoc();
          * Auto submit after time up
          */
         $(document).ready(function(){
+            /**
+             * check if radio button is clicked then enable submit button
+             */
+            $('#myform :radio').click(function() {
+                if (!$("input[name='choice']:checked").val()) {
+                    return false;
+                }
+                else {
+//                    var radioValue = document.getElementById("choice").value;
+//                    alert(radioValue);
+//                    var changeDiv = "<div id='demo' value='"+radioValue+"'>";
+//                    document.getElementById('trouble').innerHTML = changeDiv;
+
+                    document.getElementById("submit").disabled = false;
+                    document.getElementById("submit").style.background = 'green';
+                }
+            });
+
+            //------------------------------------------------------------------
             var time = 30;
             var getValue = Number(getUrlParameter('n'));
             var addValue = 1;
             getValue = getValue + addValue;
 
-            var url = 'english_exam.php?n='+getValue;
+            var url = '';
+            var rightAns = <?php echo $showAns['id']; ?>;
+
+//            if (document.getElementById('choice').checked) {
+//                var radioValue = document.getElementById('choice').value;
+//            }
+
+
             var finalUrl =  'english_final.php';
 
+
             function countdown(){
+
                 setTimeout(countdown,1000);
                 document.getElementById("quizTime").innerHTML = time;
                 time--;
 
                 if(time < 0){
                     if(getValue <= 10){
-                        window.location = url;
+                        if(document.getElementById('submit').disabled) {
+                            url = 'hindi_exam.php?n='+getValue;
+                            window.location = url;
+                        }else{
+                            myFunction();
+                            url = 'hindi_process.php?rightAns='+rightAns+'&radioAns='+$( "input[type=radio][name='choice']:checked" ).val()+'&numb='+getValue;
+                            //alert($( "input[type=radio][name='choice']:checked" ).val());
+                            window.location = url;
+                        }
                     }else{
                         window.location = finalUrl;
                     }
+
                     time = 0;
                 }
             }
             countdown();
         });
+
+
+
+
+
 
         // fetching the GET value parameter
         function getUrlParameter(sParam) {
@@ -101,17 +143,10 @@ $showAns = $showAnswer->fetch_assoc();
         /**
          * check if radio button is clicked then enable submit button
          */
-        $(document).ready(function(){
-            $('#myform :radio').click(function() {
-                if (!$("input[name='choice']:checked").val()) {
-                    return false;
-                }
-                else {
-                    document.getElementById("submit").disabled = false;
-                    document.getElementById("submit").style.background = 'green';
-                }
-            });
-        });
+        //        $(document).ready(function(){
+        //
+        //
+        //        });
 
 
         /**
@@ -121,8 +156,8 @@ $showAns = $showAnswer->fetch_assoc();
         {
             var rightAns = <?php echo $showAns['id']; ?>;
             var radioValue = $("input[name='choice']:checked", '#myform').val();
-            var myButton = "choice_"+radioValue;
 
+            var myButton = "choice_"+radioValue;
 
             var danger = "<div class=\"alert\">"+
                 "<span class=\"closebtn\"></span>"+
@@ -141,16 +176,13 @@ $showAns = $showAnswer->fetch_assoc();
         }
 
 
-
-
-
     </script>
 
 
 </head>
 <body>
 <div id="wrapper">
-    <div id="content">
+    <div id="content" style="background:url('images/exam-hindi-back.png') no-repeat">
         <div id="exam-header">
             <div id="exam-header-inner">
                 Student Name: <?php echo $_SESSION['cName']; ?>
@@ -182,9 +214,9 @@ $showAns = $showAnswer->fetch_assoc();
         <?php endwhile; ?>
 
         <div id="exam-answer"> <!-- Footer Controls -->
-            <div style="margin-top:-30px;float:left;background: url('images/exam-footer-bengali.png');height:97px;width:625px;">
+            <div style="margin-top:-30px;float:left;background: url('images/exam-footer-hindi.png');height:97px;width:625px;">
                 <div style="float:left;margin-top:30px;margin-left:5px;"><!-- Answer Submit Button -->
-                    <input id="submit" name="submit" type="submit" value="নিশ্চিত করা" class="confirm-class" style="height:38px;width:123px;" disabled>
+                    <input id="submit" name="submit" type="submit" value="पुष्टि करें" class="confirm-class" style="height:38px;width:123px;" disabled>
                 </div>
 
                 <input type="hidden" name="number" value="<?php echo $number; ?>"/>

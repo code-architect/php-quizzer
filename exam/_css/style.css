@@ -1,6 +1,8 @@
 body{
 	background-color: #000;
-	background: url('../images/background.jpg') no-repeat;
+	/*background: url('../images/background.jpg') no-repeat;
+    background-attachment: fixed;
+    background-position: center;*/
 }
 #wrapper{
 	width: 770px;
@@ -52,9 +54,9 @@ body{
 #select-language-name{border:2px solid #999;padding:10px;float: left;width: 50%;margin-left: 25%;margin-top: 10px;text-transform: uppercase;
 	height: 5px;text-align: center;}
 .titlebox{background-color: #eeeeee;color: #6165fd;float:left;padding:0 5px;margin:-20px 0 0 10px;text-transform: capitalize;}
-#exam-header{background:url('../images/exam-header.png') no-repeat;height:107px;width:100%;float:left;margin-top:33px;margin-left:15px;}
+#exam-header{height:107px;width:100%;float:left;margin-top:33px;margin-left:15px;}
 #exam-header-inner{float:left;font-weight:bold;text-transform:uppercase;color:#446804;margin:60px 0px 0px 150px;width:40%;text-align:center;border:1px solid #000;}
-#exam-question{background:url('../images/exam-question.png') no-repeat;height:107px;width:100%;float:left;margin-left:15px;}
+#exam-question{height:107px;width:100%;float:left;margin-left:15px;}
 #exam-answer{height:107px;width:100%;float:left;margin-top:5px;margin-left:15px;}
-.exam-box{background-color:#c6c6c6;color:#6564EE;font-weight:bold;width:366px;height:105px;resize:none;font-size:17px; }
-.ans-box{background-color:#c6c6c6;color:#6564EE;font-weight:bold;width:366px;height:85px;resize:none;font-size:17px;}
+.exam-box{background-color:#c6c6c6;color:blue;width:366px;height:105px;resize:none;font-size:17px;font-family: Arial, Helvetica, sans-serif;}
+.ans-box{background-color:#c6c6c6;color:blue;width:366px;height:95px;resize:none;font-size:17px;font-family:Calibri;}

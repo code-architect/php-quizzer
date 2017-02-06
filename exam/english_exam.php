@@ -38,9 +38,6 @@ $showAns = $showAnswer->fetch_assoc();
 
 
 //-----------------------------------------------------------------------------//
-
-
-
 ?>
 
 <html>
@@ -78,7 +75,7 @@ $showAns = $showAnswer->fetch_assoc();
             });
 
             //------------------------------------------------------------------
-            var time = 10;
+            var time = 30;
             var getValue = Number(getUrlParameter('n'));
             var addValue = 1;
             getValue = getValue + addValue;
@@ -146,10 +143,10 @@ $showAns = $showAnswer->fetch_assoc();
         /**
          * check if radio button is clicked then enable submit button
          */
-//        $(document).ready(function(){
-//
-//
-//        });
+        //        $(document).ready(function(){
+        //
+        //
+        //        });
 
 
         /**
@@ -179,16 +176,12 @@ $showAns = $showAnswer->fetch_assoc();
         }
 
 
-
-
-
     </script>
-
 
 </head>
 <body>
 <div id="wrapper">
-    <div id="content">
+    <div id="content" style="background:url('images/exam-english-back.png') no-repeat">
         <div id="exam-header">
             <div id="exam-header-inner">
                 Student Name: <?php echo $_SESSION['cName']; ?>
@@ -209,20 +202,22 @@ $showAns = $showAnswer->fetch_assoc();
         <?php while($row = $choices->fetch_assoc()) : ?>
         <div id="exam-answer">
             <div style="margin-left:130px;">
-                <div id="sendRadio"  style="margin-left:-50px;margin-top:-20px;float:left;">
+                <div style="margin-left:-50px;margin-top:20px;float:left;">
                     <input type="radio" id="choice" name="choice" value="<?php echo $row['id']; ?>"/>
                 </div>
+				
                 <div id="choice_<?php echo $row['id']; ?>">
-                    <textarea  class="ans-box" style="margin-top:-40px;" disabled><?php echo $row['answer']; ?></textarea>
+                    <textarea class="ans-box"  disabled><?php echo $row['answer']; ?></textarea>
                 </div>
+				
             </div>
         </div>
         <?php endwhile; ?>
 
         <div id="exam-answer"> <!-- Footer Controls -->
-            <div style="margin-top:-30px;float:left;background: url('images/exam-footer-bengali.png');height:97px;width:625px;">
+            <div style="margin-top:-30px;float:left;background: url('images/exam-footer-englishi.png');height:97px;width:625px;">
                 <div style="float:left;margin-top:30px;margin-left:5px;"><!-- Answer Submit Button -->
-                    <input id="submit" name="submit" type="submit" value="নিশ্চিত করা" class="confirm-class" style="height:38px;width:123px;" disabled>
+                    <input id="submit" name="submit" type="submit" value="CONFIRM" class="confirm-class" style="height:38px;width:123px;font-weight:bold;" disabled>
                 </div>
 
                 <input type="hidden" name="number" value="<?php echo $number; ?>"/>
@@ -230,15 +225,13 @@ $showAns = $showAnswer->fetch_assoc();
         </form>
          <!-- form ends -->
 
-                <div id="trouble" align="center"></div>
-
                 <div style="float:left;margin-top:35px;margin-left:40px;color:#089D99;font-weight:bold;font-size:30px; ">
                     <?php echo $_SESSION['score']; ?>/<?php echo $_GET['n']; ?>
                 </div>
                 <div id="quizTime" style="float:left;margin-top:35px;margin-left:140px;color:#FF0733;font-weight:bolder;font-size:30px; "><!-- Timer -->
 
                 </div>
-                <div style="float:left;margin-top:35px;margin-left:180px;color:#089D99;font-weight:bold;font-size:30px; "><!-- Page Count -->
+                <div style="float:left;margin-top:35px;margin-left:140px;color:#089D99;font-weight:bold;font-size:30px; "><!-- Page Count -->
                     <?php echo $_GET['n']; ?>
                 </div>
             </div>

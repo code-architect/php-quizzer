@@ -5,15 +5,7 @@
 	</head>
 	<body>
 		<div id="wrapper">
-			<div id="content"<?php
-								$url = $_SERVER['REQUEST_URI'];
-								$pageName = explode('/', $url);
-								$pageName = end($pageName);
-								if($pageName=='examination-end-bengali-pass.php'){?>
-									style="background: url('../../images/stall-back.png') no-repeat;"
-								<?php
-									}
-								?>>
+			<div id="content" style="background: url('../../images/stall-back.png') no-repeat;">
 				<div id="header">
 					<h1>STALL</h1>
 				</div>

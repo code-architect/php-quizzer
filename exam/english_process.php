@@ -1,7 +1,6 @@
 <?php include '../admin/includes/all.php'; ?>
 <?php
-//echo "<pre>";
-//print_r($_POST);
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
