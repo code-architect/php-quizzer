@@ -1,0 +1,86 @@
+index->
+    start-test.php->
+        select-language.php->
+            examination.php->
+
+current [bortoman prosno]
+
+quizTime [abosistho second]
+
+
+<form action="action.php" accept-charset="utf-8">
+
+CREATE TABLE `texts` (
+  `id` INT(11) unsigned NOT NULL AUTO_INCREMENT,
+  `text` TEXT CHARACTER SET latin1,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+//--------------------------------------------------------------------------------------------------------
+
+mysql> CREATE TEMPORARY TABLE SalesSummary (
+    -> product_name VARCHAR(50) NOT NULL
+    -> , total_sales DECIMAL(12,2) NOT NULL DEFAULT 0.00
+    -> , avg_unit_price DECIMAL(7,2) NOT NULL DEFAULT 0.00
+    -> , total_units_sold INT UNSIGNED NOT NULL DEFAULT 0
+);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> INSERT INTO SalesSummary
+    -> (product_name, total_sales, avg_unit_price, total_units_sold)
+    -> VALUES
+    -> ('cucumber', 100.25, 90, 2);
+ DROP TABLE SalesSummary;
+
+
+
+foreach($items as $key => $value) {
+    echo $key.' is a '.$value[0].' containing '.$value[1];
+}
+
+
+
+SELECT * FROM table ORDER BY RAND() LIMIT 10;
+
+question, ans_1, ans_2, ans_3, right_ans, image
+
+http://stackoverflow.com/questions/3258835/php-display-x-items-from-foreach-loop-with-link-to-display-next-x-items
+//--------------------------------------------------------------------------------------------------------
+
+mysqli_query($conn,'SET CHARACTER SET utf8'); mysqli_query($conn,"SET SESSION collation_connection ='utf8_general_ci'")
+
+//-------------------------------------------------------------//
+<p>You will be redirected in <span id="counter">10</span> second(s).</p>
+<script type="text/javascript">
+function countdown() {
+    var i = document.getElementById('counter');
+    if (parseInt(i.innerHTML)<=0) {
+        location.href = 'login.php';
+    }
+    i.innerHTML = parseInt(i.innerHTML)-1;
+}
+setInterval(function(){ countdown(); },1000);
+</script>
+
+=====================
+http://stackoverflow.com/questions/12498209/redirect-10-second-countdown
+
+https://www.youtube.com/watch?v=mJ6IhtkxW1Q
+
+https://www.youtube.com/watch?v=fKZNIDJjJRs
+
+https://www.youtube.com/watch?v=EA27xM71m0g
+
+https://www.youtube.com/watch?v=eCpDweOvEMg
+
+https://www.youtube.com/watch?v=iO6ovnDo4FQ
+
+
+
+
+
+
+
+
+
+Array ( [choice] => 11 [submit] => Submit [number] => 1 [actual_number] => 4 )
