@@ -159,13 +159,21 @@ $showAns = $showAnswer->fetch_assoc();
 
             var myButton = "choice_"+radioValue;
 
-            var danger = "<div class=\"alert\">"+
-                "<span class=\"closebtn\"></span>"+
-                "<strong>Success!</strong> Indicates a successful or positive action.</div>";
+            var success = "<div>" +
+                "<textarea style=\"background-color: #00CC00\" class=\"ans-box\"  disabled>"+
+               "</textarea>"+"</div>";
 
-            var success =  "<div class=\"alert success\">"+
+            var danger = "<div>" +
+                "<textarea style=\"background-color: red\" class=\"ans-box\"  disabled>"+
+                "</textarea>"+"</div>";
+
+            /*var danger = "<div class=\"alert\">"+
+             "<span class=\"closebtn\"></span>"+
+             "<strong>Success!</strong> Indicates a successful or positive action.</div>";*/
+
+            /*var success =  "<div class=\"alert success\">"+
                 "<span class=\"closebtn\"></span>"+
-                "<strong>Success!</strong> Indicates a successful or positive action.</div>";
+                "<strong>Success!</strong> Indicates a successful or positive action.</div>";*/
 
             if(rightAns == radioValue)
             {
